@@ -1,9 +1,5 @@
 # CS_Exp_ZNS
 
-[QEMU 7.1.0](https://download.qemu.org/qemu-7.1.0.tar.xz)
-
-[Ubuntu Server 22.04](https://mirror.linux-ia64.org/ubuntu-releases/22.04.1/ubuntu-22.04.1-live-server-amd64.iso)
-
 > 文本来源：XJTU2022计算机系统综合实验 王老师PPT （侵删）
 
 ## 实验目的
@@ -38,6 +34,12 @@
 
  SPDK是一套存储开发套件，专门为专用设备(NVME)设计。全称是The Storage Performance Development Kit。SPDK提供了一系列的高性能、可扩展、用户态下面的工具和库。在SPDK中，存储设备的驱动代码运行在用户态，不会运行在内核态，避免了内核的上下文切换节省了大量的处理开销，节省下来的CPU时间片可以用于实际的数据处理，比如重复数据删除、压缩、加密。SPDK的原则是通过消除每一处额外的软件开销来提供最少的延迟和最高的效率。
 
-## 实验详情
+## 相关资源
+
+[QEMU 7.1.0](https://download.qemu.org/qemu-7.1.0.tar.xz)
+
+[Ubuntu Server 22.04](https://mirror.linux-ia64.org/ubuntu-releases/22.04.1/ubuntu-22.04.1-live-server-amd64.iso)
+
+## 实验细节
 
 [Miracle24's BLOG](https://miracle24.site/)
