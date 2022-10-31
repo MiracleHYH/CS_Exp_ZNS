@@ -2,12 +2,6 @@
 
 计算机综合实验 ZNS SSD
 
-## Task1 环境配置
+[QEMU 7.1.0](https://download.qemu.org/qemu-7.1.0.tar.xz)
 
-### 编译安装QEMU
-
-```bash
-wget https://download.qemu.org/qemu-7.1.0.tar.xz
-
-```
-
+[Ubuntu Server 22.04](https://mirror.linux-ia64.org/ubuntu-releases/22.04.1/ubuntu-22.04.1-live-server-amd64.iso)
