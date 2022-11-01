@@ -1,10 +1,25 @@
 # 实验一、QEMU基本环境搭建
-## 相关文件
+## 实验目的
+
+1. 掌握QEMU基本用法
+2. 掌握ZNS SSD设备模拟方法
+
+## 实验内容
+
+1. 下载QEMU源代码并编译安装
+2. 下载ubuntu 22.04镜像并在QEMU中安装
+3. 在QEMU中模拟zns ssd
+4. 启动QEMU的ubuntu操作系统，观察zns ssd是否安装成功
+
+## 实验过程和步骤
+
+### 相关文件
+
 - [qemu-7.1.0](https://download.qemu.org/qemu-7.1.0.tar.xz)
 - [Ubuntu Server 22.04](https://mirror.linux-ia64.org/ubuntu-releases/22.04.1/ubuntu-22.04.1-live-server-amd64.iso)
 
-## 安装QEMU
-### 安装依赖
+### 安装QEMU
+#### 安装依赖
 Required additional packages
 ```bash
 sudo apt install git libglib2.0-dev libfdt-dev libpixman-1-dev zlib1g-dev ninja-build
@@ -21,7 +36,7 @@ sudo apt install libvde-dev libvdeplug-dev libvte-2.91-dev libxen-dev liblzo2-de
 sudo apt install valgrind xfslibs-dev
 sudo apt install libnfs-dev libiscsi-dev
 ```
-### 编译安装QEMU
+#### 编译安装QEMU
 ```bash
 wget https://download.qemu.org/qemu-7.1.0.tar.xz
 tar xvJf qemu-7.1.0.tar.xz
@@ -30,14 +45,14 @@ cd qemu-7.1.0
 make
 sudo make install
 ```
-### 检验
+#### 检验
 ```bash
 qemu-system-x86_64 --version
 ```
 ![file](README.assets/635faf3d2be54.png)
 
-## 安装Ubuntu
-### 创建虚拟盘
+### 安装Ubuntu
+#### 创建虚拟盘
 - -f qcow2：磁盘格式为qcow2
 - ubuntu.qcow2：磁盘名
 - 30G：磁盘大小
@@ -54,7 +69,7 @@ qemu-img create -f qcow2 ubuntu.qcow2 30G
 qemu-img info ubuntu.qcow2
 ```
 ![file](README.assets/635fb81de8d1e.png)
-### 设置并启动虚拟机
+#### 设置并启动虚拟机
 - --enable-kvm：使用KVM虚拟化
 - -m 8G：8G虚拟内存
 - -smp 2：模拟的SMP架构中CPU的个数为2
@@ -124,14 +139,14 @@ qemu-system-x86_64 --enable-kvm -m 8G -smp 2 -boot order=dc -hda ./env/ubuntu.qc
 14. 等待安装完成后，点击左上角Machine选择Quit即可
     ![file](README.assets/635fcdc0ccafa.png)
 
-## 再创建一块虚拟盘用于模拟NVMe ZNS SSD
+### 再创建一块虚拟盘用于模拟NVMe ZNS SSD
 ```bash
 qemu-img create -f qcow2 znsssd.qcow2 10G
 ```
 此时目录下应该有两个虚拟磁盘文件，一个是前文安装Ubuntu Server的系统盘，一个是用于模拟ZNS的虚拟盘
 ![file](README.assets/635fcf80a19cc.png)
 
-## 再次启动虚拟机并挂载两块硬盘
+### 再次启动虚拟机并挂载两块硬盘
 > [QEMU NVMe模拟 官方文档](https://www.qemu.org/docs/master/system/devices/nvme.html)
 
 - -name：虚拟机名称
@@ -173,7 +188,7 @@ qemu-system-x86_64 -name cs-exp-zns -m 8G --enable-kvm -cpu host -smp 4 \
 -device nvme,serial=baz,id=nvme2 \
 -device nvme-ns,id=ns2,drive=mynvme,nsid=2,logical_block_size=4096,physical_block_size=4096,zoned=true,zoned.zone_size=131072,zoned.zone_capacity=131072,zoned.max_open=0,zoned.max_active=0,bus=nvme2
 ```
-## 查看NVMe设备
+### 查看NVMe设备
 启动虚拟机后登陆，在dev下查看nvme设备是否存在
 
 ```bash
@@ -193,8 +208,8 @@ sudo nvme zns id-ns /dev/nvme0n1 -H
 ```
 ![file](README.assets/63608a87877e4.png)
 
-## 额外工作
-### 目录共享
+### 额外工作
+#### 目录共享
 添加共享目录优点
 
 - [x] 便于保存LOG文件至宿主机
@@ -202,7 +217,7 @@ sudo nvme zns id-ns /dev/nvme0n1 -H
 - [x] 便于文件传输
 - [ ] ...
 
-1. 在启动参数中添加共享配置
+在启动参数中添加共享配置
 
 - path：主机目录路径
 - mount_tag：mount标签，后续在虚拟机里挂载会用到
@@ -211,7 +226,7 @@ sudo nvme zns id-ns /dev/nvme0n1 -H
 -fsdev local,id=fsdev0,path=./work/,security_model=none \
 -device virtio-9p-pci,id=fs0,fsdev=fsdev0,mount_tag=hostshare
 ```
-2. 启动虚拟机后挂载共享目录
+启动虚拟机后挂载共享目录
 
 ```bash
 cd ~
@@ -220,7 +235,7 @@ sudo mount hostshare -t 9p ./work
 ```
 这样当前目录下的更改就会实时同步到虚拟机和宿主机中了
 
-### 保存启动配置
+#### 保存启动配置
 `vim start.sh`
 
 ```shell
@@ -238,3 +253,6 @@ qemu-system-x86_64 -name cs-exp-zns -m 8G --enable-kvm -cpu host -smp 4 \
 `chmod +x ./start.sh`
 之后使用`./start.sh`就可以快速启动虚拟机了
 
+## 实验结论和心得体会
+
+本次实验成功编译安装了QEMU并掌握了基于QEMU的NVMe ZNS SSD模拟方法。
