@@ -42,4 +42,4 @@
 
 ## 实验细节
 
-[Miracle24's BLOG](https://miracle24.site/)
+[Miracle24's BLOG](https://miracle24.site/?s=%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%BC%E5%90%88%E8%AE%BE%E8%AE%A1%E5%AE%9E%E9%AA%8C)
