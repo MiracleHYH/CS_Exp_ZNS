@@ -62,7 +62,9 @@ qemu-img create -f qcow2 ubuntu.qcow2 30G
 ```
 ![file](README.assets/635fb8418d0a4.png)
 创建的虚拟磁盘文件默认在当前目录下，可以使用`ls`查看
+
 ![file](README.assets/635fbdfe4ccc0.png)
+
 查看磁盘信息
 
 ```bash
@@ -81,18 +83,23 @@ qemu-img info ubuntu.qcow2
 qemu-system-x86_64 --enable-kvm -m 8G -smp 2 -boot order=dc -hda ./env/ubuntu.qcow2 -cdrom ./env-resource/ubuntu-22.04.1-live-server-amd64.iso
 ```
 1. 选择Try or Install Ubuntu Server
+
    ![file](README.assets/635fbf2cdf5d0.png)
 
 2. 语言选择English
+
    ![file](README.assets/635fbfa8c7fc5.png)
 
 3. 不更新版本
+
    ![file](README.assets/635fc03468e02.png)
 
 4. 键盘保持默认
+
    ![file](README.assets/635fc08dc06a2.png)
 
 5. 选择完整安装
+
    ![file](README.assets/635fc0d4199a7.png)
 
 6. 网络部分选择DHCP自动获取，之后会通过端口映射方式暴露虚拟机端口
@@ -116,18 +123,23 @@ qemu-system-x86_64 --enable-kvm -m 8G -smp 2 -boot order=dc -hda ./env/ubuntu.qc
    ![file](README.assets/635fca0fd42fc.png)
 
 7. 不使用代理，此处留空即可
+
    ![file](README.assets/635fca20aab4c.png)
 
 8. 镜像源保持默认即可，也可以换成阿里、清华等其他源
+
    ![file](README.assets/635fca48491ea.png)
 
 9. 没必要使用LVM逻辑卷，这里直接取消勾选
+
    ![file](README.assets/635fcab69ac93.png)
 
 10. 确认分区没问题就下一步
+
     ![file](README.assets/635fcb4d8c791.png)
 
 11. 设置主机名、用户名和密码
+
     ![file](README.assets/635fcbf6077aa.png)
 
 12. 勾选SSH
