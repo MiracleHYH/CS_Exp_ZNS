@@ -1,6 +1,10 @@
 #! /bin/bash
-cd ~/Documents/CS_Exp_ZNS
-qemu-system-x86_64 -name cs-exp-zns -m 8G --enable-kvm -cpu host -smp 4 \
+cd /home/miracle/Documents/CS_Exp_ZNS
+qemu-system-x86_64 --enable-kvm \
+-nographic \
+-name cs-exp-zns \
+-m 8G \
+-cpu host -smp 4 \
 -hda ./env/ubuntu.qcow2 \
 -net user,hostfwd=tcp:127.0.0.1:7777-:22,hostfwd=tcp:127.0.0.1:2222-:2000 -net nic \
 -drive file=./env/znsssd.qcow2,id=mynvme,format=qcow2,if=none \
