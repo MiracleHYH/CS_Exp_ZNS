@@ -36,7 +36,7 @@ make
 ```
 > You will see several error messages when running the unit tests, but they are part of the test suite. The final message at the end of the script indicates success or failure
 >
-> ![file](https://miracle24.site/wp-content/uploads/2022/11/6368ba03d55a9.png)
+> ![file](./README.assets/6368ba03d55a9.png)
 
 ### 运行NVME hello world程序
 1. 页分配与设备解绑
@@ -58,7 +58,7 @@ sudo scripts/setup.sh
 ```bash
 sudo ./build/examples/hello_world
 ```
-![file](https://miracle24.site/wp-content/uploads/2022/11/6368bcd9d3d17.png)
+![file](./README.assets/6368bcd9d3d17.png)
 
 ### 通过分析NVME hello world源码学习SPDK基本原理
 在 `spdk/examples/nvme/hello_world/hello_world.c` 下查看hello world源码并对关键部分进行分析
