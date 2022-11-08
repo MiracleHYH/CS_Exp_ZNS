@@ -38,7 +38,13 @@ make
 >
 > ![file](./README.assets/6368ba03d55a9.png)
 
+5. 安装
+```bash
+sudo make install
+```
+
 ### 运行NVME hello world程序
+
 1. 页分配与设备解绑
 ```bash
 sudo scripts/setup.sh
@@ -379,4 +385,7 @@ graph TB
 TODO
 
 ## 实验结论和心得体会
-本次实验
+
+本次实验编译安装了SPDK；通过运行并分析NVME hello world源码学习了SPDK基本原理；并在此基础上修改hello world，实现了zns命令I/O读写。
+
+## 
