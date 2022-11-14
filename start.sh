@@ -9,7 +9,7 @@ if [ $1 == ssd ]; then
     -hda ./env/ubuntu.qcow2 \
     -net user,hostfwd=tcp:127.0.0.1:7777-:22 -net nic \
     -drive file=./env/ssd.qcow2,id=nvm,if=none \
-    -device nvme,serial=baz,drive=nvm \
+    -device nvme,serial=deadbeef,drive=nvm \
     -fsdev local,id=fsdev0,path=./work/,security_model=none \
     -device virtio-9p-pci,id=fs0,fsdev=fsdev0,mount_tag=hostshare
 else
