@@ -9,7 +9,7 @@ elif [ $1 == znsssd ]; then
     echo "已指定SSD磁盘,将使用znsssd.qcow2"
 elif [ $1 == ssd ]; then
     echo "已指定SSD磁盘,将使用ssd.qcow2"
-    $ZNSSSD_NAME=sssd.qcow2
+    $ZNSSSD_NAME=ssd.qcow2
 else
     echo "未知磁盘(可选:znsssd,ssd)"
     exit
