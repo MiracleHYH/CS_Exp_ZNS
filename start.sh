@@ -4,15 +4,14 @@ ZNSSSD_NAME=znsssd.qcow2
 ZNSSSD_FORMAT=qcow2
 
 if [ $# == 0 ]; then
-   echo "未指定ZNS SSD磁盘格式,使用默认qcow2格式文件"
-elif [ $1 == qcow2 ]; then
-    echo "已指定ZNS SSD磁盘格式为qcow2,将使用znsssd.qcow2,format=qcow2"
-elif [ $1 == raw ]; then
-    echo "已指定ZNS SSD磁盘格式为raw,将使用znsssd.img,format=raw"
-    $ZNSSSD_NAME=znsssd.img
-    $ZNSSSD_FORMAT=raw
+   echo "未指定SSD磁盘,使用默认znsssd.qcow2"
+elif [ $1 == znsssd ]; then
+    echo "已指定SSD磁盘,将使用znsssd.qcow2"
+elif [ $1 == ssd ]; then
+    echo "已指定SSD磁盘,将使用ssd.qcow2"
+    $ZNSSSD_NAME=sssd.qcow2
 else
-    echo "未知格式(可选:qcow2,raw)"
+    echo "未知磁盘(可选:znsssd,ssd)"
     exit
 fi
 
@@ -21,7 +20,7 @@ cd /home/miracle/Documents/CS_Exp_ZNS
 if [ -e ./env/$ZNSSSD_NAME ]; then
     echo "已找到$ZNSSSD_NAME,开始启动虚拟机"
 else
-    echo "未找到$ZNSSSD_NAME,请先在env中创建ZNS SSD磁盘文件"
+    echo "未找到$ZNSSSD_NAME,请先在env中创建磁盘文件"
     exit
 fi
 
