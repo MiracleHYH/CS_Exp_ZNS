@@ -1,4 +1,8 @@
 miracle_bdev
+
+data.in
+data.out
+
 # Prerequisites
 *.d
 
