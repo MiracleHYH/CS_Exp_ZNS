@@ -1,3 +1,0 @@
-[submodule "work/spdk"]
-	path = work/spdk
-	url = git@github.com:spdk/spdk.git
