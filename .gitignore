@@ -1,4 +1,5 @@
 /env-resource/
 /env/
 /.vscode/
-# work/spdk
+work/spdk/isa-l/isa-l
+work/spdk/isa-l/spdk-isal.log
