@@ -1,4 +1,4 @@
-SPDK_ROOT_DIR := $(abspath $(CURDIR)/../spdk)
+SPDK_ROOT_DIR := /home/miracle/work/spdk
 
 APP = hello_miracle
 
