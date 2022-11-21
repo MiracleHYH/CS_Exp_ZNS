@@ -12,4 +12,5 @@ include $(SPDK_ROOT_DIR)/mk/spdk.app.mk
 
 run: all
 	@ rm -f miracle_blob.d miracle_blob.o
+	@ $(SPDK_ROOT_DIR)/scripts/gen_nvme.sh --json-with-subsystems > ./miracle_bdev.json
 	@ sudo ./miracle_blob ./miracle_bdev.json
