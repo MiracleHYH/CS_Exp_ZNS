@@ -6,7 +6,6 @@
 #include "spdk/log.h"
 #include "spdk/string.h"
 #include "spdk/bdev_zone.h"
-#include <math.h>
 
 static char *g_bdev_name = "Nvme0n1";
 
@@ -201,7 +200,7 @@ static void miracle_bdev(void *arg)
     block_size = spdk_bdev_get_block_size(p->bdev);
     buf_align = spdk_bdev_get_buf_align(p->bdev);
 
-    p->buff_size = ceil((double)(DATA_LENGTH+1)/block_size)*block_size;
+    p->buff_size = ceil(1.0*DATA_LENGTH/block_size)*block_size;
     p->buff = spdk_dma_zmalloc(p->buff_size, buf_align, NULL);
     if (!p->buff)
     {
@@ -215,7 +214,7 @@ static void miracle_bdev(void *arg)
     SPDK_NOTICELOG("Generating Data\n");
     char *str = generate_str();
     if (str){
-        snprintf(p->buff, p->buff_size, "%s", str);
+        sprintf(p->buff, "%s", str);
         free(str);
         SPDK_NOTICELOG("Saving Data to ./data.in\n");
         save_data("./data.in", p->buff);
