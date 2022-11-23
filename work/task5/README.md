@@ -21,6 +21,7 @@
 ### 初始化环境
 
 在spdk目录下
+
 ```bash
 sudo HUGEMEM=5120 ./scripts/setup.sh
 ```
@@ -47,6 +48,7 @@ make -j$(nproc)
 ### 创建一个空的SPDK blobfs
 
 在 `spdk/test/blobfs/`目录下
+
 ```bash
 sudo ./mkfs/mkfs ./nvme.json Nvme0n1
 ```
@@ -62,6 +64,7 @@ sudo mkdir /mnt/fuse
 ### 运行fuse示例程序
 
 在 `spdk/test/blobfs/`目录下
+
 ```bash
 sudo ./fuse/fuse ./nvme.json Nvme0n1 /mnt/fuse/
 ```
