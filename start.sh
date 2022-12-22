@@ -4,7 +4,7 @@ if [ $1 == ssd ]; then
     qemu-system-x86_64 --enable-kvm \
     -nographic \
     -name cs-exp-zns \
-    -m 12G \
+    -m 8G \
     -cpu host -smp 4 \
     -hda ./env/ubuntu.qcow2 \
     -net user,hostfwd=tcp:127.0.0.1:7777-:22 -net nic \
